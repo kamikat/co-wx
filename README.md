@@ -40,8 +40,6 @@ Use `res.reply` will reply a xml document described as [official documentation](
 Platform API
 ------------
 
-Initialization
-
     var WxAPIProvider = require('co-wx/api');
 
     var wxApi = new WxAPIProvider({
@@ -49,7 +47,7 @@ Initialization
       secret: '<and-the-secret>'
     });
 
-Retrieve information of specific subscriber
+**Retrieve information of specific subscriber**
 
     var co = require('co');
 
@@ -59,7 +57,36 @@ Retrieve information of specific subscriber
     })
     .then(function () { /* ... */ });
 
-**Good night... more examples tomorrow**
+Use with a `co-router`
+
+    var Router = require('co-router');
+
+    var router = Router();
+
+    router.get('/user/:openId', function* (req, res, next) {
+      return res.status(200).send(yield wxApi.getSubscriberInfo(req.params.openId));
+    });
+
+    app.use('/some-prefix', router);
+
+**Sending a service template message to subscriber**
+
+    yield wxApi.sendTemplateMessageToSubscriber('<template-id>', openId, url, {
+      /* template data */
+    });
+
+**Create a temporary scene based QRCode**
+
+    var ticket = yield wxApi.createTemporaryQrCode(sceneId, expiresIn);
+
+`expiresIn` parameter is optional and defaults to maximum value of 7 days.
+returns a ticket object contains QRCode ticket and url data.
+
+**JSSDK parameter API for `wx.config`** (use `co-router`)
+
+    router.get('/config', function* (req, res, next) {
+      return res.status(200).send(yield req.wx.getJsApiConfig(req.query.url || req.get('Referer')));
+    });
 
 Debug
 -----
