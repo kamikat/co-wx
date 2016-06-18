@@ -31,5 +31,6 @@ WxAPIProvider.extend = function (obj) {
 WxAPIProvider.extend(require('./platform'));
 WxAPIProvider.extend(require('./jsapi'));
 WxAPIProvider.extend(require('./snsapi'));
+WxAPIProvider.extend(require('./iot'));
 
 module.exports = WxAPIProvider;
