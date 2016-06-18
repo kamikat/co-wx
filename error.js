@@ -1,9 +1,10 @@
 var util = require('util');
 
 function WxError (msg) {
-  Error.call(this, msg);
+  Error.call(this);
   Error.captureStackTrace(this, this.constructor);
   this.name = this.constructor.name;
+  this.message = msg
   this.statusCode = 500;
 }
 
