@@ -2,6 +2,7 @@ var _debug = require('debug')('wx:api:jsapi');
 
 var WxAPIError = require('../error').WxAPIError;
 
+var http = require('axios');
 var getNonceStr = require('../util').getNonceStr;
 var sha1sum = require('../util').sha1sum;
 

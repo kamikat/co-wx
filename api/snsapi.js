@@ -2,6 +2,7 @@ var _debug = require('debug')('wx:api:sns');
 
 var WxAPIError = require('../error').WxAPIError;
 
+var http = require('axios');
 var qs = require('querystring');
 
 module.exports = {
