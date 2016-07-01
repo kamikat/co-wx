@@ -1,12 +1,12 @@
 {
   "name": "co-wx",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "WeChat server develop toolkit, with generator functions",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "kirisetsz@gmail.com",
+  "author": "kamikat <kirisetsz@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.9.1",
