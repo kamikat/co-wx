@@ -1,6 +1,6 @@
 {
   "name": "co-wx",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "WeChat server develop toolkit, with generator functions",
   "main": "index.js",
   "scripts": {
