@@ -33,8 +33,8 @@ module.exports = {
       method : 'GET',
       url    : 'https://api.weixin.qq.com/sns/oauth2/access_token',
       params : {
-        appid      : appId,
-        secret     : secret,
+        appid      : this.appId,
+        secret     : this.secret,
         code       : code,
         grant_type : 'authorization_code'
       }
