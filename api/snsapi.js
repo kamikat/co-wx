@@ -4,6 +4,7 @@ var WxAPIError = require('../error').WxAPIError;
 
 var http = require('axios');
 var qs = require('querystring');
+var getNonceStr = require('../util').getNonceStr;
 
 module.exports = {
 
