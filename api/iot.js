@@ -37,4 +37,40 @@ module.exports = {
     _debug(`device ${deviceId} authorized.`);
   },
 
+  bindDevice: function* (deviceId, openId) {
+    var accessToken = yield this.getAccessToken();
+    _debug(`bind ${deviceId} to ${openId}...`);
+    var res = yield http({
+      method : 'POST',
+      url    : 'https://api.weixin.qq.com/device/compel_bind',
+      params : { access_token : accessToken },
+      data   : {
+        "device_id": deviceId,
+        "openid": openId
+      }
+    });
+    if (res.data.errcode) {
+      throw new WxAPIError('failed to bind device', res.data);
+    }
+    _debug(`device ${deviceId} bind success.`);
+  },
+
+  unbindDevice: function* (deviceId, openId) {
+    var accessToken = yield this.getAccessToken();
+    _debug(`unbind ${deviceId} from ${openId}...`);
+    var res = yield http({
+      method : 'POST',
+      url    : 'https://api.weixin.qq.com/device/compel_unbind',
+      params : { access_token : accessToken },
+      data   : {
+        "device_id": deviceId,
+        "openid": openId
+      }
+    });
+    if (res.data.errcode) {
+      throw new WxAPIError('failed to unbind device', res.data);
+    }
+    _debug(`device ${deviceId} unbind success.`);
+  }
+
 };
